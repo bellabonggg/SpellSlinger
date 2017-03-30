@@ -5,12 +5,13 @@ using System.Collections.Generic;
 
 public class PlayerController : NetworkBehaviour {
 
-    public GameObject bulletPrefab;
+    //public Camera followPlayerCamera;
 
     //stats (movement speed, spells)
     public float moveSpeed = 5;
-    public string[] spellList = new string[4] { "Fireball", "Iceball", "Earthwall", "Debuff" };
-    public float[] spellCooldown = new float[4] { 0, 0, 0, 0 };
+    public List<string> spellList = new List<string>();
+    public List<string> spellCooldown = new List<string>();
+    string playerName;
 
     //private List<IBuffable> buffList = new List<IBuffable>();
 
@@ -37,6 +38,8 @@ public class PlayerController : NetworkBehaviour {
             return;
         }
 
+        spellList = 
+
         joystick = GameObject.Find("Joystick").GetComponent<VirtualJoystick>();
         playerRigidBody = GetComponent<Rigidbody>();
 
@@ -45,7 +48,7 @@ public class PlayerController : NetworkBehaviour {
         button0.onClick.AddListener(CmdCast0);
 
         button1 = GameObject.Find("Cast1").GetComponent<Button>();
-        button1.onClick.AddListener(CmdCast1);
+        //button1.onClick.AddListener(CmdCast1);
 
         button2 = GameObject.Find("Cast2").GetComponent<Button>();
         // button2.onClick.AddListener(() => Cast(2));
@@ -64,6 +67,11 @@ public class PlayerController : NetworkBehaviour {
         }
 
         Move();
+        /*
+        Vector3 cameraVector = new Vector3(playerRigidBody.transform.position.x, followPlayerCamera.transform.position.y, playerRigidBody.transform.position.z);
+
+        followPlayerCamera.transform.position = cameraVector;
+        */
 
     }
 
@@ -99,22 +107,4 @@ public class PlayerController : NetworkBehaviour {
         }
     }
  
-    [Command]
-    public void CmdCast1()
-    {
-        Debug.Log("Preparing to cast");
-
-        if (spellCooldown[0] == 0)
-        {
-            Debug.Log("Casting");
-            //GameObject spellPrefab = Resources.Load("Spell", typeof(GameObject)) as GameObject;
-
-            var spell = (GameObject)Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
-            spell.GetComponent<Rigidbody>().velocity = spell.transform.forward * 6;
-
-            //spellCooldown[0] = 1;
-            NetworkServer.Spawn(spell);
-            Destroy(spell, 2.0f);
-        }
-    }
 }

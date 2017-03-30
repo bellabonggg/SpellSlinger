@@ -1,4 +1,4 @@
-5.5.0f3:2.8.2.0
+5.5.2f1:2.8.2.0
 StandaloneWindows
 D:/Software/Unity/Editor/Data/Managed/UnityEngine.dll
 D:/Software/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
@@ -8,5 +8,3 @@ D:/Software/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.A
 D:/Software/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll
 D:/Software/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll
 D:/Software/Unity/Editor/Data/Managed/UnityEditor.dll
-D:/Software/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll
-D:/Software/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll
